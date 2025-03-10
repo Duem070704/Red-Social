@@ -1,5 +1,5 @@
 # Red Social con Publicaciones y Comentarios
-Este es un proyecto llamado "Red Social" que gestiona publicaciones y comentarios de una red social utilizando **Node.js**, **Express.js** y **MongoDB** con **Mongoose**. El objetivo es permitir a los usuarios crear publicaciones, agregar comentarios a estas publicaciones, y gestionar usuarios de manera sencilla a través de una API RESTful.
+Este es un proyecto llamado "Red Social" que gestiona publicaciones y comentarios de una red social utilizando Usando **Mongoose**, **Embedding** y **Referencing**. El objetivo es permitir a los usuarios crear publicaciones, agregar comentarios a estas publicaciones, y gestionar usuarios de manera sencilla a través de una API.
 
 ## Tecnologías
 
@@ -13,7 +13,7 @@ Este es un proyecto llamado "Red Social" que gestiona publicaciones y comentario
 
 El proyecto está dividido en los siguientes componentes:
 
-### 1. **Modelos (Mongoose Schemas)**
+### 1. **Modelos**
 
 - **User Model**: Define la estructura de los usuarios en la base de datos. Contiene campos como `nombreUsuario` y `gmail`.
   
@@ -23,7 +23,7 @@ El proyecto está dividido en los siguientes componentes:
 
 - **Embedding**: Usamos embedding para los comentarios dentro de las publicaciones porque optimiza la lectura de los datos. Al almacenar los comentarios directamente dentro de la publicación, se reduce la cantidad de consultas a la base de datos cuando se necesita obtener una publicación con sus comentarios. (Esto es más eficiente cuando los comentarios no son demasiado grandes o numerosos).
 
-- **Referencing**: Utilizamos referencing para vincular la publicación con el usuario que la creó. Al utilizar Referencing podemos mantener la relación entre los usuarios y las publicaciones de manera eficiente. Esto permite realizar consultas de manera más sencilla para obtener, por ejemplo, el autor de una publicación.
+- **Referencing**: Utilizamos referencing para vincular la publicación con el usuario que la creó. Al utilizar Referencing podemos mantener la relación entre los usuarios y las publicaciones de manera eficiente. Esto permite realizar consultas de manera más sencilla para obtener el autor de una publicación como ejemplo.
 
 
 ### 2. **Controladores**
@@ -50,7 +50,7 @@ Las rutas definen los endpoints de la API. Cada controlador de funcionalidades t
 
 El archivo `server.js` configura el servidor Express, conecta con MongoDB y establece las rutas de la API.
 
-## Endpoints
+## Endpoints usados
 
 ### Usuarios
 
@@ -161,9 +161,10 @@ Sigue estos pasos para instalar y ejecutar la API de Inventario en tu máquina l
 
 Antes de comenzar, asegúrate de tener instalado:
 
-- **Node.js** (versión recomendada: 16+)
-- **MongoDB** (local o en la nube)
-- **Git** (para clonar el repositorio)
+- **Node.js** (la versión recomendada: 16+)
+- **Mongoose** (la versión mas reciente)
+- **MongoDB** (puede ser local o en la nube)
+- **Git** (la usamos para clonar el repositorio)
 
 ### Pasos de Instalación
 
