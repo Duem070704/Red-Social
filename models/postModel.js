@@ -27,7 +27,6 @@ const postSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,  // Referencia al usuario que creó la publicación
         ref: 'User', // Relacionamos con el modelo 'User'
-        index: true // Índice para mejorar el rendimiento de las consultas
     }, // Usamos referencing para enlazar la publicación con un usuario existente
 
     contenido: {
