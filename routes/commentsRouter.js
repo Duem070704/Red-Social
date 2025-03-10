@@ -1,14 +1,14 @@
 const express = require('express');
-const router = express.Router();
-const commentController = require('../controllers/commentController');
+const router = express.Router(); // Importamos el enrutador de Express
+const commentController = require('../controllers/commentController'); // Importamos el controlador de comentarios
 
-// Crear un comentario
+// Ruta para crear un comentario en una publicación específica
 router.post('/postComment/:id', commentController.postComment);
 
-// Actualizar un comentario
+// Ruta para actualizar un comentario específico dentro de una publicación
 router.put('/putComment/:postId/:commentId', commentController.putComment);
 
-// Eliminar un comentario
+// Ruta para eliminar un comentario específico dentro de una publicación
 router.delete('/deleteComment/:postId/:commentId', commentController.deleteComment);
 
-module.exports = router;
+module.exports = router; // Exportamos el router para ser utilizado en la aplicación principal

@@ -1,24 +1,29 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-//requerimos la rutas
+require('dotenv').config();  // Cargar las variables de entorno desde el archivo .env
+const express = require('express');  // Importar Express.js para crear el servidor
+const mongoose = require('mongoose');  // Importar Mongoose para manejar la conexión a MongoDB
+// Requerimos las rutas de los controladores para usuarios, publicaciones y comentarios
 const userRoutes = require('./routes/userRouter');
 const postRoutes = require('./routes/postRouter');
-const comentsRouter = require('./routes/commentsRouter')
+const comentsRouter = require('./routes/commentsRouter');
 
+const app = express();  // Crear la aplicación Express
+app.use(express.json());  // Middleware para parsear las solicitudes con cuerpos JSON
 
-const app = express();
-app.use(express.json());
-
-// Conexión a MongoDB
+// Conexión a MongoDB usando Mongoose
 mongoose.connect(process.env.MONGO_URI, { 
-}).then(() => console.log("Conectado a MongoDB con Mongoose🚀"))
-.catch(err => console.error("Error al conectar a MongoDB ❌", err));
+}).then(() => {
+    console.log("Conectado a MongoDB con Mongoose🚀");  // Si la conexión es exitosa
+}).catch(err => {
+    console.error("Error al conectar a MongoDB ❌", err);  // Si hay un error en la conexión
+});
 
+// Definir el puerto del servidor
+const PORT = process.env.PORT || 3002;  // Usar el puerto de la variable de entorno o 3002 como predeterminado
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);  // Iniciar el servidor en el puerto definido
+});
 
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, ()=> console.log(`Servidor corriendo en http://localhost:${PORT}`));
-
-app.use('/api', userRoutes);
-app.use('/api', postRoutes);
-app.use('/api', comentsRouter);
+// Usar las rutas para las diferentes funcionalidades de la API
+app.use('/api', userRoutes);  // Rutas para usuarios
+app.use('/api', postRoutes);  // Rutas para publicaciones
+app.use('/api', comentsRouter);  // Rutas para comentarios
