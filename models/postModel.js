@@ -5,7 +5,6 @@ const comentsSchema = new Schema({
     userComment: {
         type: Schema.Types.ObjectId,  // Referencia al usuario que hizo el comentario
         ref: 'User', // Relacionamos con el modelo 'User'
-        index: true // Agregamos un índice para mejorar el rendimiento en búsquedas
     }, // Usamos referencing para enlazar el comentario con un usuario existente
 
     texto: {
